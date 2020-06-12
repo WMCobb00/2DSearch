@@ -57,6 +57,7 @@ class Grid(Surface):
             pygame.time.delay(35)
             pygame.display.flip()
 
+    ''' Builds a matrix of int values to control displayed grid '''
     def build_grid_matrix(self, node_size: int):
         for x in range(win_dims[0] // node_size):
             self.grid_matrix[0].append(0)
