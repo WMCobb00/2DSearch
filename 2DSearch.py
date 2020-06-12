@@ -13,9 +13,8 @@ class Main:
         pygame.init()  # initializes pygame
 
         pygame.display.set_caption(win_title)  # sets window title
-        surface = Surface(win_dims, (40, 40, 40))  # creates a surface
+        Grid(win_dims, 25, (200, 0, 220))  # creates a surface
         pygame.display.flip()
-        surface.build_grid(25)
 
         ''' Main loop '''
         run = True
@@ -30,22 +29,39 @@ class Main:
 ''' Creates a new Pygame Surface '''
 class Surface:
 
-    surface = None
-
-    def __init__(self, surface_dims: (int, int), fill_color: (int, int, int)):
+    def __init__(self, surface_dims: (int, int)):
         self.surface = pygame.display.set_mode(surface_dims)  # creates a surface
-        self.surface.fill(fill_color)  # sets surface fill color
+        self.surface.fill((40, 40, 40))  # sets surface fill color to 'dark grey'
+
+        # NEED TO HAVE A MENU BUILT HERE
+
+
+''' Creates a Grid type subclass of Surface'''
+class Grid(Surface):
+
+    def __init__(self, surface_dims: (int, int), node_size: int, grid_color: (int, int, int)):
+        super(Grid, self).__init__(surface_dims)
+        self.grid_matrix = [[]]
+
+        self.build_grid(node_size, grid_color)
 
     ''' Builds a grid of rectangular nodes in columns from left->right '''
-    def build_grid(self, node_dims: int):
-        node_size = node_dims  # Set the size of the grid block
+    def build_grid(self, node_size: int, grid_color: (int, int, int)):
+        self.build_grid_matrix(node_size)  # builds a matrix of the grid
+
         for x in range(win_dims[0] // node_size):
             for y in range(8, win_dims[1] - 100 // node_size):
                 node = pygame.Rect(x * node_size, y * node_size,
                                    node_size, node_size)
-                pygame.draw.rect(self.surface, (200, 0, 220), node, 1)
-            pygame.time.delay(40)
+                pygame.draw.rect(self.surface, grid_color, node, 1)
+            pygame.time.delay(35)
             pygame.display.flip()
+
+    def build_grid_matrix(self, node_size: int):
+        for x in range(win_dims[0] // node_size):
+            self.grid_matrix[0].append(0)
+        for y in range(8, win_dims[1] - 100 // node_size):
+            self.grid_matrix.append(self.grid_matrix[0])
 
 
 class Search:
