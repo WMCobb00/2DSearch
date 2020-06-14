@@ -1,5 +1,4 @@
-import pygame
-
+import tkinter as tk
 
 ''' Main class to run program '''
 class Main:
