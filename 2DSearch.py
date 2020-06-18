@@ -7,6 +7,7 @@ Created on: 6/14/2020
 '''
 
 import tkinter as tk
+from PIL import Image, ImageTk
 
 
 ''' Main class to run program '''
