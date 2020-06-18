@@ -31,7 +31,7 @@ class App:
 
         self.root = tk.Tk()  # Builds root window for this App instance
 
-    #  Driver method for App
+    #  Driver method for App class
     def run_app(self):
 
         self.__build_app_root()
@@ -44,7 +44,7 @@ class App:
     #  Builds root
     def __build_app_root(self):
         self.root.title(App.__win_title)
-        self.root.iconbitmap('./resources/icons/2DSearch.ico')  # Sets window icon
+        self.root.iconbitmap('./resources/images/icons/2DSearch.ico')  # Sets window icon
         self.root.minsize(App.__win_dims[0], App.__win_dims[1])
         self.root.resizable(False, False)
         self.root.configure(bg='#A4A4A4')  # Sets window bg color
@@ -52,7 +52,9 @@ class App:
     #  Title screen animation
     def __title_screen(self):
         canvas = tk.Canvas(self.root, width=App.__win_dims[0], height=App.__win_dims[1])
-        canvas.pack(expand=True)
+        canvas.pack(expand=True, fill='both')
+
+        canvas.create_image(200, 200, image=tk.PhotoImage(file='./resources/images/2DSearch.png'), anchor='center')
 
     def __tutorial_screen(self):
         pass
