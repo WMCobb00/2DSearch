@@ -8,34 +8,62 @@ Created on: 6/14/2020
 
 import tkinter as tk
 
+
 ''' Main class to run program '''
 
 class Main:
 
     def __init__(self):
-        pass
+
+        app = App()
+        app.run_app()
 
 
-''' Window class to build the GUI '''
+''' App class to build the GUI '''
 
-class Window:
-    # Window vars
+class App:
+
+    # App vars
     __win_title = '2DSearch'
-    __win_dims = (1200, 800)
+    __win_dims = (1200, 700)
 
     def __init__(self):
+
+        self.root = tk.Tk()  # Builds root window for this App instance
+
+    #  Driver method for App
+    def run_app(self):
+
+        self.__build_app_root()
+        self.__title_screen()
+
+        # Insert Code here
+
+        self.root.mainloop()
+
+    #  Builds root
+    def __build_app_root(self):
+        self.root.title(App.__win_title)
+        self.root.iconbitmap('./resources/icons/2DSearch.ico')  # Sets window icon
+        self.root.minsize(App.__win_dims[0], App.__win_dims[1])
+        self.root.resizable(False, False)
+        self.root.configure(bg='#A4A4A4')  # Sets window bg color
+
+    #  Title screen animation
+    def __title_screen(self):
+        canvas = tk.Canvas(self.root, width=App.__win_dims[0], height=App.__win_dims[1])
+        canvas.pack(expand=True)
+
+    def __tutorial_screen(self):
         pass
 
-    # Scenes
-
-    def main_menu(self):
+    def __main_screen(self):
         pass
 
-    def tutorial(self):
-        pass
-
-    def app(self):
-        pass
+    # App class to_string method
+    def to_string(self):
+        return f'Window title: {App.__win_title}\nWindow dimensions: {App.__win_dims}\n' \
+            f'Window Type: {type(self.root)}'
 
 
 ''' Grid class to build and update both the visual grid and the control matrix '''

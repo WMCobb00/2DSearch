@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef139747-f936-4d21-a3b2-6ba7d2e83e33" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2DSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/2DSearch.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,15 +12,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/2DSearch$2DSearch.coverage" NAME="2DSearch Coverage Results" MODIFIED="1592109258640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/2DSearch$2DSearch.coverage" NAME="2DSearch Coverage Results" MODIFIED="1592443164690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2DSearch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+            <state relative-caret-position="31">
+              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -123,23 +124,24 @@
       <updated>1591740062410</updated>
       <workItem from="1591740065452" duration="15602000" />
       <workItem from="1591921472276" duration="9295000" />
-      <workItem from="1592105747048" duration="3772000" />
+      <workItem from="1592105747048" duration="4268000" />
+      <workItem from="1592181556517" duration="8504000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28669000" />
+    <option name="totallyTimeSpent" value="37669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22107969" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22365038" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32974428" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32974428" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -173,8 +175,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2DSearch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        <state relative-caret-position="31">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
         </state>
       </provider>
     </entry>
