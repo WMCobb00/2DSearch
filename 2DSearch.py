@@ -76,7 +76,7 @@ class App:
         speed_scale.place(anchor=tk.CENTER, x=950, y=100)
 
         # Search method listbox  https://www.tutorialspoint.com/python/tk_listbox.htm
-        search_list = tk.Listbox(self.root, height=5, width=30, fg='purple')
+        search_list = tk.Listbox(self.root, height=5, width=30, fg='purple', selectbackground='purple')
         for method in App.__search_methods:
             search_list.insert(tk.END, method)
         search_list.place(anchor=tk.CENTER, x=250, y=105)
@@ -100,49 +100,9 @@ class Grid():
         pass
 
 
-''' Parent search class '''
+''' Node class to build interactive nodes '''
 
-class Search:
-
-    def __init__(self):
-        pass
-
-
-''' Depth First Search '''
-
-class DFS(Search):
-
-    def __init__(self):
-        pass
-
-
-''' Breadth First Search '''
-
-class BFS(Search):
-
-    def __init__(self):
-        pass
-
-
-''' Djikstra's Algorithm '''
-
-class Djikstra(Search):
-
-    def __init__(self):
-        pass
-
-
-''' A* Search Algorithm '''
-
-class AStar(Search):
-
-    def __init__(self):
-        pass
-
-
-''' Greedy Best First Search Algorithm '''
-
-class GBFS(Search):
+class Node():
 
     def __init__(self):
         pass
