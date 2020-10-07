@@ -32,7 +32,7 @@ class App:
         self.search = None
         self.tutorial = None
         self.speed_scale = None
-        self.grid_canvas = None
+        self.grid = None
         self.search_method_list = None
 
 
@@ -81,8 +81,8 @@ class App:
         self.search_method_list.place(anchor=tk.CENTER, x=250, y=105)
 
         # Grid canvas  https://www.tutorialspoint.com/python/tk_canvas.htm
-        self.grid_canvas = tk.Canvas(self.root, width=App.__win_dims[0], height=App.__win_dims[1])
-        self.grid_canvas.place(y=225)
+        self.grid = Grid(root=self.root, width=App.__win_dims[0], height=App.__win_dims[1])
+        self.grid.build_canvas()
 
     #  App class to_string method
     def to_string(self):
@@ -91,12 +91,21 @@ class App:
             f'Window Type: {type(self.root)}'
 
 
+
 ''' Grid class to build and update both the visual grid and the control matrix '''
 
 class Grid():
 
-    def __init__(self):
-        pass
+    def __init__(self, root, width, height):
+        self.canvas_root = root
+        self.canvas_width = width
+        self.canvas_height = height
+
+
+    def build_canvas(self):
+        self.grid = tk.Canvas(self.canvas_root, width=self.canvas_width, height=self.canvas_height)
+        self.grid.place(y=255)
+
 
 
 ''' Node class to build interactive nodes '''
@@ -104,9 +113,15 @@ class Grid():
 class Node():
 
     def __init__(self):
-        pass
+       self.coords = (100, 100, 200, 200)
+       self.color = 'blue'
+
+    def draw(self, my_canvas):
+        """Draw the rectangle on a Tk Canvas."""
+        my_canvas.create_rectangle(*self.coords, fill=self.color)
 
 
 if __name__ == '__main__':
     app = App()
     app.run_app()
+    print(type(Node()))
