@@ -69,8 +69,9 @@ class App:
 
         # Speed scale  https://www.tutorialspoint.com/python/tk_scale.htm
         self.speed_scale = tk.Scale(self.root, variable=tk.DoubleVar, orient=tk.HORIZONTAL, length=200,
-                         label='Search Speed', activebackground='purple', fg='purple', from_=1, to=4,
-                         tickinterval=1, showvalue=0)
+                         label='Search Speed', activebackground='purple', fg='purple', from_=1, to=100,
+                         tickinterval=0, showvalue=1)
+        self.speed_scale.set(50)
         self.speed_scale.place(anchor=tk.CENTER, x=950, y=100)
 
         # Search method listbox  https://www.tutorialspoint.com/python/tk_listbox.htm
