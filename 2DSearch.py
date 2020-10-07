@@ -28,6 +28,7 @@ class App:
         self.root = tk.Tk()  # Builds root window for this App instance
         
         # Children
+        self.title_art = None
         self.search = None
         self.tutorial = None
         self.speed_scale = None
@@ -55,10 +56,10 @@ class App:
 
     def __build_app_children(self):
 
-        #  Title
-        '''title_art = tk.Label(self.root, image=ImageTk.PhotoImage(App.__title_img))
-        title_art.photo = ImageTk.PhotoImage(App.__title_img)
-        title_art.pack()'''
+        #  Title art
+        '''self.title_art = tk.Label(self.root, image=ImageTk.PhotoImage(App.__title_img))
+        self.title_art.photo = ImageTk.PhotoImage(App.__title_img)
+        self.title_art.pack()'''
 
         # Search and tutorial buttons  https://www.tutorialspoint.com/python/tk_button.htm
         self.search = tk.Button(self.root, text='Search!', fg='purple', activeforeground='purple', command=None)
