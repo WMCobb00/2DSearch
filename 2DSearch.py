@@ -12,9 +12,8 @@ from time import sleep
 
 
 
-''' App class to build the GUI '''
-
 class App:
+    '''App class to build the GUI'''
 
     # Static App vars
     __win_title = '2DSearch'
@@ -92,14 +91,15 @@ class App:
 
 
 
-''' Grid class to build and update both the visual grid and the control matrix '''
-
 class Grid():
+    '''Grid class to build and update both the visual grid and the control matrix'''
 
     def __init__(self, root, width, height):
         self.canvas_root = root
         self.canvas_width = width
         self.canvas_height = height
+
+        self.node_set = {}
 
 
     def build_canvas(self):
@@ -108,9 +108,8 @@ class Grid():
 
 
 
-''' Node class to build interactive nodes '''
-
 class Node():
+    '''Node class to build interactive nodes'''
 
     def __init__(self):
        self.coords = (100, 100, 200, 200)
@@ -119,6 +118,7 @@ class Node():
     def draw(self, my_canvas):
         """Draw the rectangle on a Tk Canvas."""
         my_canvas.create_rectangle(*self.coords, fill=self.color)
+
 
 
 if __name__ == '__main__':
