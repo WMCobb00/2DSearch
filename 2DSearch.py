@@ -3,6 +3,7 @@
 Author: William Cobb
 Project: 2DSearch
 Created on: 6/14/2020
+Discription: An application to display 2D pathfinding algorithms
 **********************
 '''
 
@@ -55,7 +56,7 @@ class App:
 
     def __define_root_props(self):
         '''
-        defines root properties
+        Defines root properties
         '''
 
         self.root.title(App.__win_title)
@@ -67,7 +68,7 @@ class App:
 
     def __define_child_props(self):                                     #  put all constructor statements in __init__
         '''
-        defines the properties of the roots child widgets
+        Defines the properties of the roots child widgets
         '''
 
         #  Title art

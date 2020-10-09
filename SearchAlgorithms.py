@@ -3,6 +3,7 @@
 Author: William Cobb
 Project: 2DSearch
 Created on: 6/14/2020
+Discription: Search Algorithms used by 2DSearch application
 **********************
 '''
 
