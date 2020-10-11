@@ -1,0 +1,14 @@
+Useful links:
+
+Tk window child links:
+    Search and tutorial buttons  https://www.tutorialspoint.com/python/tk_button.htm
+
+    Speed scale  https://www.tutorialspoint.com/python/tk_scale.htm
+
+    Search method listbox  https://www.tutorialspoint.com/python/tk_listbox.htm
+    var.get example may be useful here https://www.tutorialspoint.com/python/tk_scale.htm
+
+    Grid canvas  https://www.tutorialspoint.com/python/tk_canvas.htm
+
+Node class:
+    https://stackoverflow.com/questions/3479265/help-creating-python-class-with-tkinter

@@ -18,7 +18,7 @@ class App:
         App class to serve as the app foundation. Includes root, window, and child objects as well as the driver method
     '''
 
-    # Static App vars
+    '''Static app vars'''
     __win_title = '2DSearch'
     __win_dims = (1200, 700)
     __title_img = Image.open('.//resources//images//2DSearchTitle.png')
@@ -31,15 +31,18 @@ class App:
         App constructor
         '''
 
-        self.root = tk.Tk()  # Builds root window for this App instance
+        '''root (aka window)'''
+        self.root = tk.Tk()
         
-        # Children
+        '''Child objects'''
         self.title_art = None
-        self.search = None
-        self.tutorial = None
-        self.speed_scale = None
-        self.grid = None
-        self.search_method_list = None
+        self.search_button = tk.Button(self.root, text='Search!', fg='purple', activeforeground='purple', command=None)
+        self.tutorial_button = tk.Button(self.root, text='Tutorial', fg='purple', activeforeground='purple', command=None)
+        self.speed_mod_scale = tk.Scale(self.root, variable=tk.DoubleVar, orient=tk.HORIZONTAL, length=200,
+                         label='Search Speed %', activebackground='purple', fg='purple', from_=1, to=100,
+                         tickinterval=0, showvalue=1)
+        self.search_method_list = tk.Listbox(self.root, height=5, width=30, fg='purple', selectbackground='purple')
+        self.grid = Grid(root=self.root, width=App.__win_dims[0], height=App.__win_dims[1])
 
 
     def run_app(self):
@@ -48,7 +51,7 @@ class App:
         '''
 
         self.__define_root_props()
-        self.__define_child_props()
+        self.__child_modifiers()
         # Insert Code here
         
         self.root.mainloop()
@@ -66,39 +69,32 @@ class App:
         self.root.configure(bg='#A4A4A4')  # Sets window bg color
 
 
-    def __define_child_props(self):                                     #  put all constructor statements in __init__
+    def __child_modifiers(self):
         '''
-        Defines the properties of the roots child widgets
+        Modifies the properties of the roots child widgets
         '''
 
-        #  Title art
+        '''Title art'''
         '''self.title_art = tk.Label(self.root, image=ImageTk.PhotoImage(App.__title_img))
         self.title_art.photo = ImageTk.PhotoImage(App.__title_img)
         self.title_art.pack()'''
 
-        # Search and tutorial buttons  https://www.tutorialspoint.com/python/tk_button.htm
-        self.search = tk.Button(self.root, text='Search!', fg='purple', activeforeground='purple', command=None)
-        self.search.place(anchor=tk.CENTER, x=600, y=100, height=50, width=100)
+        '''Search button'''
+        self.search_button.place(anchor=tk.CENTER, x=600, y=100, height=50, width=100)
 
-        self.tutorial = tk.Button(self.root, text='Tutorial', fg='purple', activeforeground='purple', command=None)
-        self.tutorial.place(anchor=tk.CENTER, x=600, y=210, height=30, width=75)
+        '''Tutorial button'''
+        self.tutorial_button.place(anchor=tk.CENTER, x=600, y=210, height=30, width=75)
 
-        # Speed scale  https://www.tutorialspoint.com/python/tk_scale.htm
-        self.speed_scale = tk.Scale(self.root, variable=tk.DoubleVar, orient=tk.HORIZONTAL, length=200,
-                         label='Search Speed %', activebackground='purple', fg='purple', from_=1, to=100,
-                         tickinterval=0, showvalue=1)
-        self.speed_scale.set(50)
-        self.speed_scale.place(anchor=tk.CENTER, x=950, y=100)
+        '''Speed modifier scale'''
+        self.speed_mod_scale.set(50)
+        self.speed_mod_scale.place(anchor=tk.CENTER, x=950, y=100)
 
-        # Search method listbox  https://www.tutorialspoint.com/python/tk_listbox.htm
-        # var.get example may be useful here https://www.tutorialspoint.com/python/tk_scale.htm
-        self.search_method_list = tk.Listbox(self.root, height=5, width=30, fg='purple', selectbackground='purple')
+        '''Search method listbox (preferably a dropdown at a later date)'''
         for method in App.__search_methods:
             self.search_method_list.insert(tk.END, method)
         self.search_method_list.place(anchor=tk.CENTER, x=250, y=105)
 
-        # Grid canvas  https://www.tutorialspoint.com/python/tk_canvas.htm
-        self.grid = Grid(root=self.root, width=App.__win_dims[0], height=App.__win_dims[1])
+        '''Grid'''
         self.grid.place_canvas()
 
 
@@ -145,7 +141,6 @@ class Grid():
       
 
  
-# useful https://stackoverflow.com/questions/3479265/help-creating-python-class-with-tkinter
 class Node():
     '''
         Node class to build interactive tk canvas rectangles
