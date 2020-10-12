@@ -20,7 +20,7 @@ class App:
 
     '''Static app vars'''
     __win_title = '2DSearch'
-    __win_dims = (1200, 700)
+    __win_dims = (1205, 705)  # Dimensions end in 5 due to border padding in tk canvas
     __title_img = Image.open('.//resources//images//2DSearchTitle.png')
     __logo_img = Image.open('.//resources//images//2DSearchLogo.png')
     __search_methods = ['Depth First Search', 'Breadth First Search', "Djikstra's", 'A*', 'Greedy Best First Search']
@@ -114,20 +114,21 @@ class Grid():
     '''
 
 
-    def __init__(self, root: tk.Tk, width: int, height: int, y_offset_val: int=250):
+    def __init__(self, root: tk.Tk, width: int, height: int, y_offset_val: int=240):
         '''
         Grid constructor
         :param root: tk.Tk() object
         :param width: canvas width, use window width
         :param height: canvas height, use window height
-        :param y_offset_val: canvas y axis offset from top of screen, offset=250 by default
+        :param y_offset_val: canvas y axis offset from top of screen, offset=260 by default
         '''
 
         self.canvas_root = root
         self.canvas_width = width
         self.canvas_height = height
         self.y_offset = y_offset_val
-        self.canvas = tk.Canvas(self.canvas_root, width=self.canvas_width, height=self.canvas_height)
+        self.x_offset = 0
+        self.canvas = tk.Canvas(self.canvas_root, width=self.canvas_width-4, height=self.canvas_height-self.y_offset-4)
 
         self.node_set = {}
 
@@ -137,7 +138,7 @@ class Grid():
         Places a tk canvas in the window where Node objects can be drawn with the specified y offset
         '''
 
-        self.canvas.place(y=self.y_offset)  # This gives us a x=1200, y=450 canvas to build a grid on
+        self.canvas.place(y=self.y_offset, x=self.x_offset)  # This gives us a x=1200, y=460 canvas to build a grid on (60x23 Nodes)
       
 
  
@@ -146,14 +147,48 @@ class Node():
         Node class to build interactive tk canvas rectangles
     '''
 
+    '''Static node vars'''
+    __next_node_id = 0
+    __node_height = 20
+    __node_width = 20
+    __next_node_coords = [-18, 2, 2, 22]
+
+
     def __init__(self):
-       self.coords = (100, 100, 200, 200)
-       self.color = 'blue'
+        '''
+            Node constructor
+        '''
+
+        self.node_id = Node.__next_node_id
+        self.node_coords = Node.__next_node_coords
+        self.default_color = ''
+        self.outline_color = '#4f4f4f'  # Dark grey
+        self.hover_color = '#deaff3'  # Lilac
+
+        Node.__next()
+
+    
+    @classmethod
+    def __next(Node):
+
+        Node.__next_node_id += 1
+
+        if Node.__next_node_coords[2] < 1200:
+            Node.__next_node_coords[0] += Node.__node_width
+            Node.__next_node_coords[2] += Node.__node_width
+        elif Node.__next_node_coords[2] >= 1200 and Node.__next_node_coords[3] < 460:
+            Node.__next_node_coords[0] = 2
+            Node.__next_node_coords[2] = 22
+            Node.__next_node_coords[1] += Node.__node_height
+            Node.__next_node_coords[3] += Node.__node_height
+        else:
+            pass
 
 
-    def draw(self, my_canvas):
+
+    def draw(self, canvas):
         """Draw the rectangle on a Tk Canvas."""
-        my_canvas.create_rectangle(*self.coords, fill=self.color)
+        canvas.create_rectangle(*self.node_coords, fill=self.default_color, outline=self.outline_color, activefill=self.hover_color)
 
 
 
