@@ -130,7 +130,9 @@ class Grid():
         self.x_offset = 0
         self.canvas = tk.Canvas(self.canvas_root, width=self.canvas_width-4, height=self.canvas_height-self.y_offset-4)
 
-        self.node_set = {}
+        self.node_list = []
+        self.__fill_node_list()
+        self.__draw_grid()
 
 
     def place_canvas(self):
@@ -139,18 +141,31 @@ class Grid():
         '''
 
         self.canvas.place(y=self.y_offset, x=self.x_offset)  # This gives us a x=1200, y=460 canvas to build a grid on (60x23 Nodes)
+
+
+    def __fill_node_list(self):
+
+        for i in range(0, int((1200/Node.node_width)*(460/Node.node_height)+1)):
+            self.node_list.append(Node())
+
+    
+    def __draw_grid(self):
+
+        for i in self.node_list:
+            print(i.node_coords)
+            i.draw(self.canvas)
       
 
  
-class Node():
+class Node():                                                # Currently having issue where instance vars update when static vars do
     '''
         Node class to build interactive tk canvas rectangles
     '''
 
     '''Static node vars'''
     __next_node_id = 0
-    __node_height = 20
-    __node_width = 20
+    node_height = 20
+    node_width = 20
     __next_node_coords = [-18, 2, 2, 22]
 
 
@@ -165,29 +180,35 @@ class Node():
         self.outline_color = '#4f4f4f'  # Dark grey
         self.hover_color = '#deaff3'  # Lilac
 
-        Node.__next()
+        Node.__update()
 
     
     @classmethod
-    def __next(Node):
+    def __update(Node):
+        '''
+        Updates the Node class next id and next coords
+        '''
 
         Node.__next_node_id += 1
 
         if Node.__next_node_coords[2] < 1200:
-            Node.__next_node_coords[0] += Node.__node_width
-            Node.__next_node_coords[2] += Node.__node_width
+            Node.__next_node_coords[0] += Node.node_width
+            Node.__next_node_coords[2] += Node.node_width
         elif Node.__next_node_coords[2] >= 1200 and Node.__next_node_coords[3] < 460:
             Node.__next_node_coords[0] = 2
             Node.__next_node_coords[2] = 22
-            Node.__next_node_coords[1] += Node.__node_height
-            Node.__next_node_coords[3] += Node.__node_height
+            Node.__next_node_coords[1] += Node.node_height
+            Node.__next_node_coords[3] += Node.node_height
         else:
             pass
 
 
 
-    def draw(self, canvas):
-        """Draw the rectangle on a Tk Canvas."""
+    def draw(self, canvas: tk.Canvas):
+        '''
+        Draws the rectangle on a tk Canvas
+        :param canvas: tk.Canvas object
+        '''
         canvas.create_rectangle(*self.node_coords, fill=self.default_color, outline=self.outline_color, activefill=self.hover_color)
 
 
