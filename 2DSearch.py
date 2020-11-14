@@ -18,7 +18,7 @@ class App:
         App class to serve as the app foundation. Includes root, window, and child objects as well as the driver method
     '''
 
-    '''Static app vars'''
+    '''App class vars'''
     __win_title = '2DSearch'
     __win_dims = (1205, 705)  # Dimensions end in 5 due to border padding in tk canvas
     __title_img = Image.open('.//resources//images//2DSearchTitle.png')
@@ -132,6 +132,7 @@ class Grid():
 
         self.node_list = []
         self.__fill_node_list()
+
         self.__draw_grid()
 
 
@@ -145,14 +146,32 @@ class Grid():
 
     def __fill_node_list(self):
 
+        node_id = 0
+        node_coords = [2, 2, 22, 22]
+
         for i in range(0, int((1200/Node.node_width)*(460/Node.node_height)+1)):
-            self.node_list.append(Node())
+            self.node_list.append(Node(node_id, node_coords))
+
+            node_id += 1
+
+            if node_coords[2] < 1200:
+                node_coords[0] += Node.node_width
+                node_coords[2] += Node.node_width
+            elif node_coords[2] >= 1200 and node_coords[3] < 460:
+                node_coords[0] = 2
+                node_coords[2] = 22
+                node_coords[1] += Node.node_height
+                node_coords[3] += Node.node_height
+            else:
+                pass
+            #self.node_list.append(i)
+        print(self.node_list)
 
     
     def __draw_grid(self):
 
         for i in self.node_list:
-            print(i.node_coords)
+            print(i.node_id, i.node_coords)
             i.draw(self.canvas)
       
 
@@ -162,29 +181,29 @@ class Node():                                                # Currently having 
         Node class to build interactive tk canvas rectangles
     '''
 
-    '''Static node vars'''
+    '''Node class vars'''
     __next_node_id = 0
     node_height = 20
     node_width = 20
     __next_node_coords = [-18, 2, 2, 22]
 
 
-    def __init__(self):
+    def __init__(self, this_node_id: int, this_node_coords: [int]):
         '''
-            Node constructor
+        Node constructor
         '''
 
-        self.node_id = Node.__next_node_id
-        self.node_coords = Node.__next_node_coords
+        self.node_id = this_node_id
+        self.node_coords = this_node_coords
         self.default_color = ''
         self.outline_color = '#4f4f4f'  # Dark grey
         self.hover_color = '#deaff3'  # Lilac
 
-        Node.__update()
+        #Node.__update()
 
     
     @classmethod
-    def __update(Node):
+    def update(Node):
         '''
         Updates the Node class next id and next coords
         '''
@@ -216,5 +235,5 @@ class Node():                                                # Currently having 
 if __name__ == '__main__':
     app = App()
     app.run_app()
-    print(type(Node()))
-    print(app.to_string())
+    '''print(type(Node(3, [12, 12, 20, 20])))
+    print(app.to_string())'''
