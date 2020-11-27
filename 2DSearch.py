@@ -37,6 +37,7 @@ class App:
         '''Child objects'''
         self.title_art = None
         self.search_button = tk.Button(self.root, text='Search!', fg='purple', activeforeground='purple', command=None)
+        self.clear_grid_button = tk.Button(self.root, text='Clear Grid', fg='purple', activeforeground='purple', command=None)
         self.tutorial_button = tk.Button(self.root, text='Tutorial', fg='purple', activeforeground='purple', command=None)
         self.speed_mod_scale = tk.Scale(self.root, variable=tk.DoubleVar, orient=tk.HORIZONTAL, length=200,
                          label='Search Speed %', activebackground='purple', fg='purple', from_=1, to=100,
@@ -81,6 +82,9 @@ class App:
 
         '''Search button'''
         self.search_button.place(anchor=tk.CENTER, x=600, y=100, height=50, width=100)
+
+        '''Clear Board button'''
+        self.clear_grid_button.place(anchor=tk.CENTER, x=600, y=160, height=40, width=90)
 
         '''Tutorial button'''
         self.tutorial_button.place(anchor=tk.CENTER, x=600, y=210, height=30, width=75)
@@ -176,7 +180,7 @@ class Grid():
       
 
  
-class Node():                                                # Currently having issue where instance vars update when static vars do
+class Node():
     '''
         Node class to build interactive tk canvas rectangles
     '''
