@@ -21,6 +21,7 @@ class App:
     '''App class vars'''
     __win_title = '2DSearch'
     __win_dims = (1205, 705)  # Dimensions end in 5 due to border padding in tk canvas
+    __icon_img = './/resources//images//icons//2DSearch.ico'
     __title_img = Image.open('.//resources//images//2DSearchTitle.png')
     __logo_img = Image.open('.//resources//images//2DSearchLogo.png')
     __search_methods = ['Depth First Search', 'Breadth First Search', "Djikstra's", 'A*', 'Greedy Best First Search']
@@ -64,7 +65,7 @@ class App:
         '''
 
         self.root.title(App.__win_title)
-        self.root.iconbitmap('.//resources//images//icons//2DSearch.ico')  # Sets window icon
+        self.root.iconbitmap(App.__icon_img)  # Sets window icon
         self.root.minsize(App.__win_dims[0], App.__win_dims[1])
         self.root.resizable(False, False)
         self.root.configure(bg='#A4A4A4')  # Sets window bg color
@@ -76,9 +77,9 @@ class App:
         '''
 
         '''Title art'''
-        '''self.title_art = tk.Label(self.root, image=ImageTk.PhotoImage(App.__title_img))
-        self.title_art.photo = ImageTk.PhotoImage(App.__title_img)
-        self.title_art.pack()'''
+        #self.title_art = tk.Label(self.root, image=ImageTk.PhotoImage(Image.open(App.__title_img))
+        #self.title_art.photo = ImageTk.PhotoImage(App.__title_img)
+        #self.title_art.pack()
 
         '''Search button'''
         self.search_button.place(anchor=tk.CENTER, x=600, y=100, height=50, width=100)
