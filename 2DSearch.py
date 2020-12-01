@@ -24,7 +24,7 @@ class App:
     __icon_img = './/resources//images//icons//2DSearch.ico'
     __title_img = Image.open('.//resources//images//2DSearchTitle.png')
     __logo_img = Image.open('.//resources//images//2DSearchLogo.png')
-    __search_methods = ['Depth First Search', 'Breadth First Search', "Djikstra's", 'A*', 'Greedy Best First Search']
+    __search_methods = ['Depth First Search', 'Breadth First Search', "Djikstra's Algorithm", 'A* Search', 'Greedy Best First Search']
 
 
     def __init__(self):
